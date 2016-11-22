@@ -20,11 +20,11 @@ burr detection.
 
 Minimum Requirements: The MVBDS must comply with the following:
 
-•	Must detect defects within 1.5 minute time frame
-•	Must generate pass/fail signal with 95% accuracy or greater
-•	Must use Hunt & Hunt Ltd. Machined pipes
-•	Must detect defects 1mm or larger
-•	Project budget needs to be $500 or less
+Must detect defects within 1.5 minute time frame
+Must generate pass/fail signal with 95% accuracy or greater
+Must use Hunt & Hunt Ltd. Machined pipes
+Must detect defects 1mm or larger
+Project budget needs to be $500 or less
 ******************************************************************"""
 
-print("Hello world!")
+print("W waz hear!")
