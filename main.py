@@ -34,6 +34,6 @@ while choice != "q" and choice != "Q":
         choice = input ("Invalid choice. Enter 'b; for begin test or 'q' for quit: ")
         continue
 
-    """ Main code loop will go here """
+    """ Main code to loop will go here """
 
     choice = input ("Enter 'b' for begin test or 'q' for quit: ")
