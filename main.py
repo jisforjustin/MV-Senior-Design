@@ -7,7 +7,7 @@ Project: Machine Vision Burr Detection System
 Sponsor: Hunt and Hunt Ltd.
 Faculty Advisor: Dr. Fred Chen
 Instructor: Dr. Compeau
-University: Texas State University INgram School of Engineering
+University: Texas State University Ingram School of Engineering
 
 Description: The Machine Vision Burr Detection System (MVBDS) will
 be designed by Texas State University Electrical Engineering
@@ -27,6 +27,13 @@ Must detect defects 1mm or larger
 Project budget needs to be $500 or less
 ******************************************************************"""
 
-print("W waz hear!")
-# test comment to check for commit and push jbj
-# David ikemba is able to push
+choice = input ("Enter 'b' for begin test or 'q' for quit: ")
+
+while choice != "q" and choice != "Q":
+    if choice != "b" and choice != "B":
+        choice = input ("Invalid choice. Enter 'b; for begin test or 'q' for quit: ")
+        continue
+
+    """ Main code loop will go here """
+
+    choice = input ("Enter 'b' for begin test or 'q' for quit: ")
