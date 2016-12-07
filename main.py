@@ -27,6 +27,10 @@ Must detect defects 1mm or larger
 Project budget needs to be $500 or less
 ******************************************************************"""
 
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
 choice = input ("Enter 'b' for begin test or 'q' for quit: ")
 
 while choice != "q" and choice != "Q":
