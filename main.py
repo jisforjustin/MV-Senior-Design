@@ -45,7 +45,7 @@ while choice != "q" and choice != "Q":
     returnVal, workingImg = cam.read()
 
     # plot working image. this code is for testing and can be removed later.
-    plt.imshow(workingImg, cmap='gray', interpolation='bicubic')
+    plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
@@ -54,6 +54,12 @@ while choice != "q" and choice != "Q":
 
     # plot grayscale image. this code is for testing and can be removed later.
     plt.imshow(grayImg, cmap='gray', interpolation='bicubic')
+    plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    plt.show()
+
+    # apply Gaussian bilateral filter to grayscale image
+    filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
+    plt.imshow(filterImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
