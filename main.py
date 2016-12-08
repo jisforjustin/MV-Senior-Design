@@ -31,6 +31,9 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
+# create webcam object. set to 0 when running on ODROID.
+cam = cv2.VideoCapture(0)
+
 choice = input ("Enter 'b' for begin test or 'q' for quit: ")
 
 while choice != "q" and choice != "Q":
@@ -38,6 +41,20 @@ while choice != "q" and choice != "Q":
         choice = input ("Invalid choice. Enter 'b; for begin test or 'q' for quit: ")
         continue
 
-    """ Main code to loop will go here """
+    # capture 1 frame from cam
+    returnVal, workingImg = cam.read()
+
+    # plot working image. this code is for testing and can be removed later.
+    plt.imshow(workingImg, cmap='gray', interpolation='bicubic')
+    plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    plt.show()
+
+    # convert to grayscale
+    grayImg = cv2.cvtColor(workingImg, cv2.COLOR_BGR2GRAY)
+
+    # plot grayscale image. this code is for testing and can be removed later.
+    plt.imshow(grayImg, cmap='gray', interpolation='bicubic')
+    plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    plt.show()
 
     choice = input ("Enter 'b' for begin test or 'q' for quit: ")
