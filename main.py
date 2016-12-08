@@ -59,7 +59,17 @@ while choice != "q" and choice != "Q":
 
     # apply Gaussian bilateral filter to grayscale image
     filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
+
+    # plot filtered image. this code is for testing and can be removed later.
     plt.imshow(filterImg, cmap='gray', interpolation='bicubic')
+    plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    plt.show()
+
+    # apply Sobel filter
+    sobelImg = cv2.Sobel(grayImg, cv2.CV_64F, 1, 1, ksize = 5)
+
+    # plot results of Sobel filter. this code is for testing and can be removed later.
+    plt.imshow(sobelImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
