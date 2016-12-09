@@ -82,3 +82,6 @@ while choice != "q" and choice != "Q":
     plt.show()
 
     choice = input ("Enter 'b' for begin test or 'q' for quit: ")
+
+cam.release()
+cv2.destroyAllWindows()
