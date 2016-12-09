@@ -43,6 +43,9 @@ while choice != "q" and choice != "Q":
 
     # capture 1 frame from cam
     returnVal, workingImg = cam.read()
+    if returnVal == False:
+        print("No communication with camera. Program terminating.")
+        exit(-1)
 
     # plot working image. this code is for testing and can be removed later.
     plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
