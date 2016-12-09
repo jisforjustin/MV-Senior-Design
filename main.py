@@ -73,4 +73,12 @@ while choice != "q" and choice != "Q":
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
+    # apply thresholding for binary image
+    binaryImg = cv2.Canny(filterImg, 100, 125)
+
+    # plot results of thresholding. this code is for testing and can be removed later.
+    plt.imshow(binaryImg, cmap='gray', interpolation='bicubic')
+    plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    plt.show()
+
     choice = input ("Enter 'b' for begin test or 'q' for quit: ")
