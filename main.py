@@ -37,7 +37,7 @@ cam = cv2.VideoCapture(0)
 choice = input ("Enter 'b' for begin test or 'q' for quit: ")
 
 #TMN 12/20/2016
-while choice == "d" or "D":
+while choice == "d" or choice == "D":
     img = cv2.imread('meeseeks.jpg', 0)#need correct image
     r = 500.0 / img.shape[1]
     dim = (500, int(img.shape[0] * r))
