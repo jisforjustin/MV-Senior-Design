@@ -27,14 +27,27 @@ Must detect defects 1mm or larger
 Project budget needs to be $500 or less
 ******************************************************************"""
 
-import cv2
 import numpy as np
+import cv2
 from matplotlib import pyplot as plt
 
 # create webcam object. set to 0 when running on ODROID.
 cam = cv2.VideoCapture(0)
 
 choice = input ("Enter 'b' for begin test or 'q' for quit: ")
+
+#TMN 12/20/2016
+while choice == "d" or "D":
+    img = cv2.imread('meeseeks.jpg', 0)#need correct image
+    r = 500.0 / img.shape[1]
+    dim = (500, int(img.shape[0] * r))
+    resized = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
+    cv2.imshow("resized", resized) #display resized image
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    choice = input("Enter 'b' for begin test or 'q' for quit: ")
+
+
 
 while choice != "q" and choice != "Q":
     if choice != "b" and choice != "B":
