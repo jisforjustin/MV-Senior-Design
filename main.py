@@ -34,24 +34,19 @@ from matplotlib import pyplot as plt
 # create webcam object. set to 0 when running on ODROID.
 cam = cv2.VideoCapture(0)
 
-choice = input ("Enter 'b' for begin test or 'q' for quit: ")
-
-#TMN 12/20/2016
-while choice == "d" or choice == "D":
-    img = cv2.imread('meeseeks.jpg', 0)#need correct image
-    r = 500.0 / img.shape[1]
-    dim = (500, int(img.shape[0] * r))
-    resized = cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
-    cv2.imshow("resized", resized) #display resized image
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    choice = input("Enter 'b' for begin test or 'q' for quit: ")
-
+choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
 
 
 while choice != "q" and choice != "Q":
+    #TMN D option
+    if choice == "d" or choice == "D":
+        returnVal, workingImg = cam.read()
+        plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
+        plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+        plt.show()
+
     if choice != "b" and choice != "B":
-        choice = input ("Invalid choice. Enter 'b; for begin test or 'q' for quit: ")
+        choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
         continue
 
     # capture 1 frame from cam
@@ -97,7 +92,7 @@ while choice != "q" and choice != "Q":
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
-    choice = input ("Enter 'b' for begin test or 'q' for quit: ")
+    choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
 
 cam.release()
 cv2.destroyAllWindows()
