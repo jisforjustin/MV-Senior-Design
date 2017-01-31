@@ -30,6 +30,9 @@ Project budget needs to be $500 or less
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
+import matplotlib.gridspec as gridspec
+
+gs = gridspec.GridSpec(2, 2) #set plot into 2x2
 
 # create webcam object. set to 0 when running on ODROID.
 cam = cv2.VideoCapture(0)
@@ -61,7 +64,11 @@ while choice != "q" and choice != "Q":
     # plot working image. this code is for testing and can be removed later.
     plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
-    plt.show()
+    ax1 = plt.subplot(gs[0]) #display image in 1st position
+    #TMN: Commented out save and show image
+    #f1 = plt.figure(1)
+    #f1.savefig('pic1.png')
+    #plt.show()
 
     # convert to grayscale
     grayImg = cv2.cvtColor(workingImg, cv2.COLOR_BGR2GRAY)
@@ -69,7 +76,11 @@ while choice != "q" and choice != "Q":
     # plot grayscale image. this code is for testing and can be removed later.
     plt.imshow(grayImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
-    plt.show()
+    ax2 = plt.subplot(gs[1]) #display image in 2nd position
+    # TMN: Commented out save and show image
+    #f2 = plt.figure(2)
+    #f2.savefig('pic2.png')
+    #plt.show()
 
     # apply Gaussian bilateral filter to grayscale image
     filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
@@ -77,7 +88,11 @@ while choice != "q" and choice != "Q":
     # plot filtered image. this code is for testing and can be removed later.
     plt.imshow(filterImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
-    plt.show()
+    ax3 = plt.subplot(gs[2]) #display image in 3rd position
+    #TMN: Commented out save and show image
+    #f3 = plt.figure(3)
+    #f3.savefig('pic3.png')
+    #plt.show()
 
     # apply Sobel filter
     sobelImg = cv2.Sobel(grayImg, cv2.CV_64F, 1, 1, ksize = 5)
@@ -85,7 +100,11 @@ while choice != "q" and choice != "Q":
     # plot results of Sobel filter. this code is for testing and can be removed later.
     plt.imshow(sobelImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
-    plt.show()
+    ax4 = plt.subplot(gs[3]) #display image in 4th position
+    #TMN: Commented out save and show image
+    #f4 = plt.figure(4)
+    #f4.savefig('pic4.png')
+    # plt.show()
 
     # apply thresholding for binary image
     binaryImg = cv2.Canny(filterImg, 100, 125)
@@ -93,6 +112,10 @@ while choice != "q" and choice != "Q":
     # plot results of thresholding. this code is for testing and can be removed later.
     plt.imshow(binaryImg, cmap='gray', interpolation='bicubic')
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+    #TMN: Commented out save image
+    #f5 = plt.figure(5)
+    #f4.savefig('pic4.png')
+
     plt.show()
 
     choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to display additional menu, 'q' to quit: ")
