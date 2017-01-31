@@ -34,11 +34,14 @@ from matplotlib import pyplot as plt
 # create webcam object. set to 0 when running on ODROID.
 cam = cv2.VideoCapture(0)
 
-choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
+choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to display additional menu, 'q' to quit: ")
 
 
 while choice != "q" and choice != "Q":
-    #TMN D option
+    #TMN M option
+    if choice == "m" or choice == "M":
+        print("Additional menu items not implemented")
+     #TMN D option
     if choice == "d" or choice == "D":
         returnVal, workingImg = cam.read()
         plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
@@ -46,7 +49,7 @@ while choice != "q" and choice != "Q":
         plt.show()
 
     if choice != "b" and choice != "B":
-        choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
+        choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to display additional menu, 'q' to quit: ")
         continue
 
     # capture 1 frame from cam
@@ -92,7 +95,7 @@ while choice != "q" and choice != "Q":
     plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
     plt.show()
 
-    choice = input ("Enter 'b' to begin test, 'd' to display current image, 'q' to quit: ")
+    choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to display additional menu, 'q' to quit: ")
 
 cam.release()
 cv2.destroyAllWindows()
