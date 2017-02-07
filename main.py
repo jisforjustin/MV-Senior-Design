@@ -43,7 +43,20 @@ choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to d
 while choice != "q" and choice != "Q":
     #TMN M option
     if choice == "m" or choice == "M":
-        print("Additional menu items not implemented")
+        choice = input ("Enter 'p' to begin preview. Hit Esc to exit preview: ")
+        cap = cv2.VideoCapture(0)
+        while (True):
+            # Capture frame-by-frame
+            ret, frame = cap.read()
+            # Operations on the frame
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            # Display the resulting frame
+            cv2.imshow('frame', gray)
+            #Esc to Exit
+            if cv2.waitKey(1) == 27:
+                break
+        cv2.destroyAllWindows()
+        
      #TMN D option
     if choice == "d" or choice == "D":
         returnVal, workingImg = cam.read()
