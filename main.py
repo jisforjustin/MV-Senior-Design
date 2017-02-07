@@ -1,6 +1,5 @@
 """******************************************************************
 File Name:main.py
-
 Authors: Justin Jordan, David Ikemba, Thuong Nguyen
 Date:
 Project: Machine Vision Burr Detection System
@@ -8,7 +7,6 @@ Sponsor: Hunt and Hunt Ltd.
 Faculty Advisor: Dr. Fred Chen
 Instructor: Dr. Compeau
 University: Texas State University Ingram School of Engineering
-
 Description: The Machine Vision Burr Detection System (MVBDS) will
 be designed by Texas State University Electrical Engineering
 students, for Hunt and Hunt Ltd., to detect burrs at the
@@ -17,9 +15,7 @@ machined pipes. The system will generate a pass/fail signal to let
 the user know if burrs are detected. This is a proof of concept
 design to demonstrate that machine vision can be used to automate
 burr detection.
-
 Minimum Requirements: The MVBDS must comply with the following:
-
 Must detect defects within 1.5 minute time frame
 Must generate pass/fail signal with 95% accuracy or greater
 Must use Hunt & Hunt Ltd. Machined pipes
@@ -43,20 +39,22 @@ choice = input ("Enter 'b' to begin test, 'd' to display current image, 'm' to d
 while choice != "q" and choice != "Q":
     #TMN M option
     if choice == "m" or choice == "M":
-        choice = input ("Enter 'p' to begin preview. Hit Esc to exit preview: ")
-        cap = cv2.VideoCapture(0)
-        while (True):
-            # Capture frame-by-frame
-            ret, frame = cap.read()
-            # Operations on the frame
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            # Display the resulting frame
-            cv2.imshow('frame', gray)
-            #Esc to Exit
-            if cv2.waitKey(1) == 27:
-                break
-        cv2.destroyAllWindows()
-        
+        preview_choice = input ("Enter 'p' to begin preview. Hit Esc to exit preview: ")
+        if preview_choice == "p" or preview_choice == "P":
+            while (True):
+                # Capture frame-by-frame
+                ret, frame = cam.read()
+                # Operations on the frame
+                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                # Display the resulting frame
+                cv2.imshow('frame', gray)
+                #Esc to Exit
+                if cv2.waitKey(1) == 27:
+                    cv2.destroyAllWindows()
+                    break
+        else:
+            print ("Please reselect one of the options")
+
      #TMN D option
     if choice == "d" or choice == "D":
         returnVal, workingImg = cam.read()
