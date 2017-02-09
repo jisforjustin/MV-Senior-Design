@@ -58,6 +58,7 @@ while choice != "q" and choice != "Q":
      #TMN D option
     if choice == "d" or choice == "D":
         returnVal, workingImg = cam.read()
+        workingImg = cv2.cvtColor(workingImg, cv2.COLOR_RGB2BGR)
         plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
         plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
         plt.show()
