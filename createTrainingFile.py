@@ -12,3 +12,6 @@ Description: The purpose of this program is to create a .vec
    capable of detecting a burr-free threading keyway intersection.
 ******************************************************************"""
 
+import cv2
+
+opencv_createsamples -vec trainingSamples.vec -info info.dat -w 300 -h 300
