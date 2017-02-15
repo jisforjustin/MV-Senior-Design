@@ -78,28 +78,31 @@ while choice != "q" and choice != "Q":
         workingImg = cv2.cvtColor(workingImg, cv2.COLOR_RGB2BGR)
 
         # plot working image. this code is for testing and can be removed later.
-        plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
+        '''plt.imshow(workingImg, cmap='brg', interpolation='bicubic')
         plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
         ax1 = plt.subplot(gs[0]) #display image in 1st position
         #TMN: Commented out save and show image
         #f1 = plt.figure(1)
         #f1.savefig('pic1.png')
-        #plt.show()
+        #plt.show()'''
 
         # convert to grayscale
         grayImg = cv2.cvtColor(workingImg, cv2.COLOR_BGR2GRAY)
 
         # plot grayscale image. this code is for testing and can be removed later.
-        plt.imshow(grayImg, cmap='gray', interpolation='bicubic')
+        '''plt.imshow(grayImg, cmap='gray', interpolation='bicubic')
         plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
         ax2 = plt.subplot(gs[1]) #display image in 2nd position
         # TMN: Commented out save and show image
         #f2 = plt.figure(2)
         #f2.savefig('pic2.png')
-        #plt.show()
+        #plt.show()'''
+
+        # open the classifier
+        detectCascade = cv2.CascadeClassifier('haarcascade_default.xml')
 
         # apply Gaussian bilateral filter to grayscale image
-        filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
+        '''filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
 
         # plot filtered image. this code is for testing and can be removed later.
         plt.imshow(filterImg, cmap='gray', interpolation='bicubic')
@@ -108,10 +111,10 @@ while choice != "q" and choice != "Q":
         #TMN: Commented out save and show image
         #f3 = plt.figure(3)
         #f3.savefig('pic3.png')
-        #plt.show()
+        #plt.show()'''
 
         # apply Sobel filter
-        sobelImg = cv2.Sobel(grayImg, cv2.CV_64F, 1, 1, ksize = 5)
+        '''sobelImg = cv2.Sobel(grayImg, cv2.CV_64F, 1, 1, ksize = 5)
 
         # plot results of Sobel filter. this code is for testing and can be removed later.
         plt.imshow(sobelImg, cmap='gray', interpolation='bicubic')
@@ -120,10 +123,10 @@ while choice != "q" and choice != "Q":
         #TMN: Commented out save and show image
         #f4 = plt.figure(4)
         #f4.savefig('pic4.png')
-        # plt.show()
+        # plt.show()'''
 
         # apply thresholding for binary image
-        binaryImg = cv2.Canny(filterImg, 100, 125)
+        '''binaryImg = cv2.Canny(filterImg, 100, 125)
 
         # plot results of thresholding. this code is for testing and can be removed later.
         plt.imshow(binaryImg, cmap='gray', interpolation='bicubic')
@@ -132,7 +135,7 @@ while choice != "q" and choice != "Q":
         #f5 = plt.figure(5)
         #f4.savefig('pic4.png')
 
-        plt.show()
+        plt.show()'''
 
     choice = input ("Enter 'b' to begin test, \n'd' to display current image, \n'm' to display additional menu, 'q' to quit: ")
 
