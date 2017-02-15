@@ -99,13 +99,13 @@ while choice != "q" and choice != "Q":
         #plt.show()'''
 
         # open the classifier
-        detectCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        detectCascade = cv2.CascadeClassifier('haarcascade_20_20.xml')
         if (detectCascade.empty() == True):
             print("Cascade Classifier not loaded, program terminating")
             exit(-1)
 
         # load a test image for detection testing (can be removed later)
-        testImg = cv2.imread('ieee_team_gray.png')
+        testImg = cv2.imread('train_test.png')
         resultsImg = testImg # to later display results of detection
 
         # detect the objects
