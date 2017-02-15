@@ -99,7 +99,23 @@ while choice != "q" and choice != "Q":
         #plt.show()'''
 
         # open the classifier
-        detectCascade = cv2.CascadeClassifier('haarcascade_default.xml')
+        detectCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+        # load a test image for detection testing (can be removed later)
+        testImg = cv2.imread('train8.png')
+        resultsImg = testImg # to later display results of detection
+
+        # detect the objects
+        objectsFound = detectCascade.detectMultiScale(testImg, 1.3, 5)
+
+        # highlight each object detected in image (x = xCoord, y = yCoord, w = width, h = height)
+        for (x, y, w, h) in objectsFound:
+            resultsImg = cv2.rectangle(resultsImg, (x, y), (x+w,y+h), (255, 0, 0), 2)
+
+        # display results of detection
+        plt.imshow(resultsImg, cmap='brg', interpolation='bicubic')
+        plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+        plt.show()
 
         # apply Gaussian bilateral filter to grayscale image
         '''filterImg = cv2.bilateralFilter(grayImg, 5, 100, 100)
