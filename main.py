@@ -100,6 +100,9 @@ while choice != "q" and choice != "Q":
 
         # open the classifier
         detectCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+        if (detectCascade.empty() == True):
+            print("Cascade Classifier not loaded, program terminating")
+            exit(-1)
 
         # load a test image for detection testing (can be removed later)
         testImg = cv2.imread('ieee_team_gray.png')
