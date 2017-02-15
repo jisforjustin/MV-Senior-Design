@@ -102,7 +102,7 @@ while choice != "q" and choice != "Q":
         detectCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
         # load a test image for detection testing (can be removed later)
-        testImg = cv2.imread('train8.png')
+        testImg = cv2.imread('ieee_team_gray.png')
         resultsImg = testImg # to later display results of detection
 
         # detect the objects
