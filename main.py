@@ -98,8 +98,8 @@ while choice != "q" and choice != "Q":
         #f2.savefig('pic2.png')
         #plt.show()'''
 
-        # open the classifier
-        detectCascade = cv2.CascadeClassifier('haarcascade_20_20.xml')
+        # open the classifier, best to date (cascade_24_24_400_single.xml)
+        detectCascade = cv2.CascadeClassifier('cascade_24_24_400_single.xml')
         if (detectCascade.empty() == True):
             print("Cascade Classifier not loaded, program terminating")
             exit(-1)
@@ -108,12 +108,13 @@ while choice != "q" and choice != "Q":
         testImg = cv2.imread('train_test.png')
         resultsImg = testImg # to later display results of detection
 
-        # detect the objects
-        objectsFound = detectCascade.detectMultiScale(testImg, 1.3, 5)
+        # detect the objects, detectCascade.detectMultiScale(image, scaleFactor, minNeighbors, flags, minSize, MaxSize)
+        objectsFound = detectCascade.detectMultiScale(testImg, 1.1, 60, 0, (60, 60), (140, 140))
 
         # highlight each object detected in image (x = xCoord, y = yCoord, w = width, h = height)
         for (x, y, w, h) in objectsFound:
             resultsImg = cv2.rectangle(resultsImg, (x, y), (x+w,y+h), (255, 0, 0), 2)
+            print(x, " ", y, " ", w, " ", h)
 
         # display results of detection
         plt.imshow(resultsImg, cmap='brg', interpolation='bicubic')
