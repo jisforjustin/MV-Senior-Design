@@ -99,22 +99,37 @@ while choice != "q" and choice != "Q":
         #plt.show()'''
 
         # open the classifier, best to date (cascade_24_24_400_single.xml)
-        detectCascade = cv2.CascadeClassifier('cascade_24_24_400_single.xml')
+        detectCascade = cv2.CascadeClassifier('thread_end_fa_05_numStages_10_haar.xml')
         if (detectCascade.empty() == True):
             print("Cascade Classifier not loaded, program terminating")
             exit(-1)
+
+        # open classifier for channel
+        '''detectChannel = cv2.CascadeClassifier('cascade_4_18_400.xml')
+        if (detectCascade.empty() == True):
+            print("Cascade Classifier not loaded, program terminating")
+            exit(-1)'''
 
         # load a test image for detection testing (can be removed later)
         testImg = cv2.imread('train_test.png')
         resultsImg = testImg # to later display results of detection
 
+        # detect the channel, detectCascade.detectMultiScale(image, scaleFactor, minNeighbors, flags, minSize, MaxSize)
+        #channelsFound = detectChannel.detectMultiScale(testImg, 1.5, 10, 0, (75, 300), (150, 650))
+
         # detect the objects, detectCascade.detectMultiScale(image, scaleFactor, minNeighbors, flags, minSize, MaxSize)
-        objectsFound = detectCascade.detectMultiScale(testImg, 1.1, 60, 0, (60, 60), (140, 140))
+        # objectsFound = detectCascade.detectMultiScale(testImg, 1.1, 60, 0, (60, 60), (140, 140))
+        objectsFound = detectCascade.detectMultiScale(testImg, 1.1, 12, 0, (35, 65), (60, 80))
+
+        # highlight each channel detected in image (x = xCoord, y = yCoord, w = width, h = height)
+        '''for (x, y, w, h) in channelsFound:
+            resultsImg = cv2.rectangle(resultsImg, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            # print(x, " ", y, " ", w, " ", h)'''
 
         # highlight each object detected in image (x = xCoord, y = yCoord, w = width, h = height)
         for (x, y, w, h) in objectsFound:
             resultsImg = cv2.rectangle(resultsImg, (x, y), (x+w,y+h), (255, 0, 0), 2)
-            print(x, " ", y, " ", w, " ", h)
+            #print(x, " ", y, " ", w, " ", h)
 
         # display results of detection
         plt.imshow(resultsImg, cmap='brg', interpolation='bicubic')
